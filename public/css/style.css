@@ -1,0 +1,84 @@
+body{
+    background: rgb(254,242,218);
+    background: radial-gradient(circle, rgba(254,242,218,1) 11%, rgba(146,218,207,1) 90%, rgba(34,193,195,1) 99%);
+}
+
+nav{
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+h1{
+    text-align: center;
+    color: white;
+    font-size: 5rem;
+    margin-bottom: 5rem;
+}
+
+h2{
+    color: lightcoral;
+}
+
+.butonsHome{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    a {
+        border-radius: 8px;
+        border: none;
+        background-color: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+        color: lightcoral;
+        padding: 10px;
+        font-size: 1rem;
+    }
+}
+
+button{
+    border-radius: 8px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    color: lightcoral;
+    padding: 10px;
+    font-size: 1rem;
+    transition: 0.5s;
+}
+
+button:hover{
+    background-color: lightcoral;
+    color: black;
+}
+
+.start{
+    text-align: center;
+}
+
+#star{
+    width: 200px;
+    opacity: 0.5;
+}
+
+.table-custom{
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 2rem ;
+
+    th,
+    td {
+        padding: 15px;
+    }
+}
+
+#btnSearch{
+    background-color: lightCoral;
+    transition: 0.5;
+}
+
+#btnSearch:hover{
+    background-color: white;
+    color: lightCoral;
+}
