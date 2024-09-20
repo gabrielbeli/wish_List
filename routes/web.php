@@ -6,7 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\IndexController;
 
 Route::get('/', function () {
-    return view('home');
+    return redirect()->route('home');
 });
 
 Route::get('/home', [IndexController::class, 'callHome'])->name('home');
