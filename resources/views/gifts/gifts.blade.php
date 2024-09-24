@@ -1,16 +1,35 @@
 @extends('layout.welcome')
 
 @section('content')
+
+    @if(session('message'))
+        <div class="alert alert-success">
+        {{session('message')}}
+        </div>
+    @endif
+
     <div style="margin-top: 10%; display:flex; flex-direction:column; gap: 15px" class="Container">
 
-    @if($gifts->isEmpty())
-        <h1 style="margin-top: 10%">Still nothing here!!</h1>
-    @else
-        <div style="display: flex; gap: 15px; align-items: baseline">
-            <i style="color: lightCoral; font-size: 2rem" class="bi bi-gift-fill"></i>
-            <h2>Gifts</h2>
+        @if($gifts->isEmpty())
+            <h1 style="margin-top: 10%">Still nothing here!!</h1>
+        @else
+
+        <div style="display: flex; justify-content: space-between">
+
+        <h2><i style="color: lightCoral; font-size: 2rem" class="bi bi-gift-fill"></i></i> Gifts</h2>
+
+        <form class="row g-3" action="">
+            <div class="col-auto">
+              <label for="inputSearch2" class="visually-hidden">Search</label>
+              <input type="text" name="search" class="form-control" id="inputSearch2" placeholder="Input name or part of">
+            </div>
+            <div class="col-auto">
+              <button id="btnSearch" type="submit" class="btn mb-3"><i class="bi bi-search-heart"></i> Search</button>
+            </div>
+        </form>
+
         </div>
-   
+
         <table class="table-custom" style="background-color: rgba(255, 255, 255, 0.3); backdrop-filter: blur(10px);">
             <thead>
                 <tr>
@@ -105,6 +124,18 @@
 
     @endif
 
+    <div style="display: flex; justify-content: space-between">
+
         <a style="text-decoration: none; font-weight:bold; background:transparent; text-align: center" href="{{route('home')}}"><i style="color: blue" class="bi bi-arrow-left-square-fill"></i> Voltar</a>
+
+        <div class="makeModal">
+            <button type="button" class="" data-bs-toggle="modal" data-bs-target="#makeModal">
+                TO WISH <i class="bi bi-stars"></i>
+            </button>
+        </div>
+    </div>
+
+    @include('components.modal-wish')
+
     </div>
 @endsection

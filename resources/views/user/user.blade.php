@@ -105,6 +105,18 @@
     </table>
      @endif
 
-        <a style="text-decoration: none; font-weight:bold; background:transparent; text-align: center" href="{{route('home')}}"><i style="color: blue" class="bi bi-arrow-left-square-fill"></i> Voltar</a>
+        <div style="display: flex; justify-content: space-between">
+
+            <a style="text-decoration: none; font-weight:bold; background:transparent; text-align: center" href="{{route('home')}}"><i style="color: blue" class="bi bi-arrow-left-square-fill"></i> Voltar</a>
+
+            <div class="registerModal">
+                <button type="button" class="" data-bs-toggle="modal" data-bs-target="#registerModal">
+                    <i class="bi bi-stars"></i> REGISTER
+                </button>
+            </div>
+        </div>
+
+        @include('components.modal-register')
+
     </div>
 @endsection

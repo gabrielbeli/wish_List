@@ -8,32 +8,34 @@ use Illuminate\Support\Facades\DB;
 
 class GiftController extends Controller
 {
-    public function index()
-    {
-        $gifts = $this->show();
+    public function index(Request $request)
+{
+    $search = $request->input('search', null);
+    $gifts = $this->show($search);
 
-        foreach ($gifts as $gift) {
-            if ($gift->value_paid !== null) {
-                $gift->difference = $gift->value_paid - $gift->value_to_pay;
-            }
+    foreach ($gifts as $gift) {
+        if ($gift->value_paid !== null) {
+            $gift->difference = $gift->value_paid - $gift->value_to_pay;
         }
-
-
-        $users = User::all();
-
-        return view('gifts.gifts', compact('gifts', 'users'));
     }
 
+    $users = User::all();
 
-    protected function show()
-    {
-        $gifts = DB::table('gifts')
-       ->join('users', 'users.id','gifts.user_id')
-       ->select('gifts.*', 'users.name as usname')
-       ->get();
+    return view('gifts.gifts', compact('gifts', 'users'));
+}
 
-        return $gifts;
+protected function show($search = null)
+{
+    $query = DB::table('gifts')
+        ->join('users', 'users.id', '=', 'gifts.user_id')
+        ->select('gifts.*', 'users.name as usname');
+
+    if ($search) {
+        $query->where('users.name', 'like', '%' . $search . '%');
     }
+
+    return $query->get();
+}
 
     public function viewGiftId($id){
 
@@ -72,7 +74,7 @@ class GiftController extends Controller
     $users = User::all();
 
     if (isset($request->id)) {
-        $action = 'atualizado';
+        $action = 'updated';
 
         $request->validate([
             'name' => 'string|max:50',
@@ -88,7 +90,7 @@ class GiftController extends Controller
                 'user_id' => $request->user_id
             ]);
     } else {
-        $action = 'adicionado';
+        $action = 'add';
 
         $request->validate([
             'name' => 'string|max:50|required',
@@ -112,7 +114,7 @@ class GiftController extends Controller
         }
     }
 
-    return view('gifts.gifts', compact('users', 'gifts'))->with('message', 'The gift was ' . $action . ' successfully!');
+    return redirect()->route('gifts.gifts')->with('message', 'The gift was ' . $action . ' successfully!');
 }
 
 }

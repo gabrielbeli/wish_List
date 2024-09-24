@@ -51,7 +51,7 @@ class UserController extends Controller
         $action = '';
 
         if(isset($request->id)){
-            $action = 'atualizado';
+            $action = 'updated';
 
             $request->validate([
                 'name' => 'string|max:50',
@@ -64,7 +64,7 @@ class UserController extends Controller
         ]);
 
         } else {
-            $action = 'adcionado';
+            $action = 'add';
 
             $request->validate([
                 'name' => 'string|max:50',
@@ -80,6 +80,6 @@ class UserController extends Controller
 
         }
 
-        return redirect()->route('user.user')->with('message', 'O usuário foi '. $action . ' com sucesso!');
+        return redirect()->route('user.user')->with('message', 'The usur was '. $action . ' successfully!');
     }
 }
