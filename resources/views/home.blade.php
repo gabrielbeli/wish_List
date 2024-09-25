@@ -51,7 +51,7 @@
                         @if (Route::has('user.user'))
                             <div class="signUpModal">
                                 <button type="button" class="" data-bs-toggle="modal" data-bs-target="#signUpModal">
-                                    <i class="bi bi-stars"></i> SIGN UP
+                                     SIGN UP <i class="bi bi-stars"></i>
                                 </button>
                             </div>
                         @endif
