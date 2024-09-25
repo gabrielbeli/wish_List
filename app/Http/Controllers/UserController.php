@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -80,6 +81,11 @@ class UserController extends Controller
 
         }
 
-        return redirect()->route('user.user')->with('message', 'The usur was '. $action . ' successfully!');
+        if (Auth::user()){
+            return redirect()->route('user.user')->with('message', 'The usur was '. $action . ' successfully!');
+        } else {
+            return redirect()->route('home')->with('message', 'The usur was '. $action . ' successfully!');
+        }
+
     }
 }

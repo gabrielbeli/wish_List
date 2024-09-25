@@ -29,15 +29,17 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{route('user.user')}}">Users</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{route('gifts.gifts')}}">Wishes</a>
-                  </li>
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('user.user')}}">Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('gifts.gifts')}}">Wishes</a>
+                        </li>
+                    @endauth
                 </ul>
               </div>
             </div>

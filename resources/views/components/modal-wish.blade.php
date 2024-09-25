@@ -5,7 +5,7 @@
                 <h4><i class="bi bi-stars"></i> Make a wish!</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div style="text-align: left" class="modal-body">
                 <form method="POST" action="{{route('createGift')}}">
                     @csrf
 
@@ -45,7 +45,7 @@
                         </select>
                     </div>
 
-                    <button type="submit" class="btn btn-primary mb-3">Submit</button>
+                    <button type="submit" class="btn btn-info mb-3">Submit</button>
                 </form>
             </div>
         </div>

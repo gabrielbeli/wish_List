@@ -41,7 +41,9 @@
                         <th scope="col">Difference Value</th>
                     @endif
                     <th scope="col">Wisher</th>
+                    @if(Auth::user()->user_type == 1)
                     <th style="text-align: center;" scope="col">Action</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -60,6 +62,7 @@
                             @endif
                         @endif
                         <td>{{$item->usname}}</td>
+                        @if(Auth::user()->user_type == 1)
                         <td>
                             <div class="updateGiftModal" style="text-align: center;">
                                 <a type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#updateGiftModal{{$item->id}}">
@@ -68,6 +71,7 @@
                                 <a href="{{route('deleteGift', $item->id)}}" class="btn btn-info">Delete</a>
                             </div>
                         </td>
+                        @endif
                     </tr>
                 @endforeach
             </tbody>
@@ -114,7 +118,7 @@
                                     </select>
                                 </div>
                                 <input type="hidden" name="id" value="{{$item->id}}">
-                                <button type="submit" class="btn btn-primary mb-3">Submit</button>
+                                <button type="submit" class="btn btn-info mb-3">Submit</button>
                             </form>
                         </div>
                     </div>

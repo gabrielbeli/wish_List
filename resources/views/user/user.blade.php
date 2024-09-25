@@ -37,7 +37,9 @@
                     <th scope="col">Name</th>
                     <th scope="col">Password</th>
                     <th scope="col">email</th>
-                    <th style="text-align: center;" scope="col">Action</th>
+                    @if(Auth::user()->user_type == 1)
+                        <th style="text-align: center;" scope="col">Action</th>
+                    @endif
                 </tr>
             </thead>
 
@@ -48,14 +50,17 @@
                     <td>{{$item->name}}</td>
                     <td>{{$item->password}}</td>
                     <td>{{$item->email}}</td>
-                    <td style="display: flex; gap: 15px; justify-content: center">
-                         <div class="userIDModal">
-                            <a type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#userIDModal{{$item->id}}">
-                                SEE | EDIT
-                            </a>
-                            <a href="{{route('deleteUser', $item->id)}}" class="btn btn-info">Delete</a>
-                        </div>
-                    </td>
+                    @if(Auth::user()->user_type == 1)
+                        <td style="display: flex; gap: 15px; justify-content: center">
+
+                            <div class="userIDModal">
+                                <a type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#userIDModal{{$item->id}}">
+                                    SEE | EDIT
+                                </a>
+                                <a href="{{route('deleteUser', $item->id)}}" class="btn btn-info">Delete</a>
+                            </div>
+                        </td>
+                    @endif
                     </tr>
                 @endforeach
             </tbody>
@@ -94,7 +99,7 @@
                                 <label for="exampleInputPhone1" class="form-label"><i class="bi bi-telephone-fill"></i>  Phone</label>
                                 <input name="phone" value="{{$item->phone}}" type="text" class="form-control" id="exampleInputPhone1">
                             </div>
-                            <button type="submit" class="btn btn-primary mb-3">Submit</button>
+                            <button type="submit" class="btn btn-info mb-3">Submit</button>
                         </form>
                     </div>
                 </div>
